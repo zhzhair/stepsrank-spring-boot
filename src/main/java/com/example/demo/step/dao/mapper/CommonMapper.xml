@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.example.demo.step.dao.mapper.CommonMapper">
+
+    <select id="getStepCount" resultType="java.lang.Integer">
+        select step_count from ${tableName}
+        where user_id = ${userId}
+    </select>
+
+    <update id="updateSteps">
+        update ${tableName} set step_count = ${stepCount}
+        where user_id = ${userId}
+    </update>
+
+    <insert id="insertTables">
+        insert into ${tableName}
+        (user_id,step_count)
+        values
+        (${userId},${stepCount})
+    </insert>
+
+    <update id="dropTableIfExists">
+        drop table if exists ${tableName}
+    </update>
+
+    <update id="createTable">
+        CREATE TABLE ${tableName} (
+        `id` int(11) NOT NULL AUTO_INCREMENT,
+        `user_id` int(11) NOT NULL,
+        `step_count` int(11) NOT NULL,
+        PRIMARY KEY (`id`),
+        KEY `idx_user` (`user_id`)
+        ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+    </update>
+
+    <select id="getTopStep" resultType="com.example.demo.step.documents.StepsTop">
+        select user_id userId,step_count totalCount
+        from ${tableName} order by step_count desc limit 200
+    </select>
+</mapper>
