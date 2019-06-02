@@ -7,12 +7,12 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="demo" />
-        <module name="steps" />
+        <module name="stepsrank-spring-boot" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel target="8">
       <module name="demo" target="1.8" />
-      <module name="steps" target="1.8" />
+      <module name="stepsrank-spring-boot" target="1.8" />
     </bytecodeTargetLevel>
   </component>
 </project>
